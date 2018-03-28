@@ -1,0 +1,21 @@
+# defaultTrialsAllowed is the default number of trials allowed to re-run a failing
+# test until and IFF it passes. This value is not required, and can be overridden
+# with the '-t' flag.
+defaultTrialsAllowed: 3
+goTestVerbose: true
+tests:
+  - name: "github.com/ETCDEVTeam/go-schroedinger..."
+      # If 'anyFailing' is false and NO 'cases' are given, the tests will be run with
+      # zero tolerance for failure, otherwise, only tests below will be re-run in case of failure.
+      anyFailing: false
+      # trialsAllowed: 5
+      cases:
+      - name: "TestCat"
+        trialsAllowed: 23 # Set a per-case trial limit.
+  - name: "github.com/ETCDEVTeam/go-schroedinger..."
+    # If 'anyFailing' is true, any tests that fail will be re-run until they pass successfully or the global
+    # `defaultTrialsAllowed` limit is reached.
+    anyFailing: true
+    trialsAllowed: 42 # Set a per-package/test trials limit.
+  - name: "github.com/ETCDEVTeam/go-schroedinger -run TestCat"
+    anyFailing: true

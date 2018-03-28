@@ -72,13 +72,13 @@ func TestIntegration(t *testing.T) {
 	//github.com/etcdevteam/go-schroedinger/...
 	//github.com/etcdevteam/go-schroedinger
 
-	want := []*test{
-		{pkg: "github.com/ETCDEVTeam/go-schroedinger", name: "TestCat"},
-		{pkg: "github.com/ETCDEVTeam/go-schroedinger/..."},
-		{pkg: "github.com/ETCDEVTeam/go-schroedinger"},
+	want := []*Test{
+		{Pkg: "github.com/ETCDEVTeam/go-schroedinger", Name: "TestCat"},
+		{Pkg: "github.com/ETCDEVTeam/go-schroedinger/..."},
+		{Pkg: "github.com/ETCDEVTeam/go-schroedinger"},
 	}
 
-	got, err := collectTestsFromFile("./example.txt")
+	got, err := setConfigFromFile("./example.txt")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -86,8 +86,8 @@ func TestIntegration(t *testing.T) {
 		t.Errorf("got: %v, want: %v", got, want)
 	}
 
-	allowed := func(t *test) bool {
-		if t.name == "" {
+	allowed := func(t *Test) bool {
+		if t.Name == "" {
 			return false
 		}
 		return true
