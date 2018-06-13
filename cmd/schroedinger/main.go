@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"log"
 	"github.com/ETCDEVTeam/go-schroedinger"
+	"log"
 )
 
 // tests should be specified with lines of the form:
